@@ -4,6 +4,7 @@ from packets import request_head_position
 from packets import request_temp
 from packets import request_progress
 from packets import request_status
+from packets import change_temperature
 
 from regex_patterns import regex_for_field
 from regex_patterns import regex_for_coordinates
@@ -88,3 +89,11 @@ def get_status(printer_address):
         printer_info[field] = re.search(regex_string, info_result).groups()[0]
 
     return printer_info
+
+def set_temperature(printer_address, temp):
+    """ Returns printer temp. Both targeted and current. """
+
+    send_and_receive(printer_address, request_control_message)
+    info_result = send_and_receive(printer_address, change_temperature.format(temp))
+
+    return info_result

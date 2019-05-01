@@ -2,7 +2,8 @@ FlashForge Finder API
 =======================
 
 This is an unofficial interpretation of the FlashForge Finder API.
-It's served with Flask to make it as easy as possible to create your own UI.
+It's served with Flask to make it as easy as possible to create your own UI. Original project: https://github.com/01F0/flashforge-finder-api
+I just added the set-temp API call.
 
 Warning
 =======================
@@ -63,6 +64,9 @@ It supports:
 
 
 /status: Status (i.e. if it's printing or not)
+
+
+/set-temp/<temperature in Celsius>
 
 
 Does it support other FlashForge models?

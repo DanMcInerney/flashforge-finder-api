@@ -3,6 +3,7 @@ from protocol import get_head_position
 from protocol import get_temp
 from protocol import get_progress
 from protocol import get_status
+from protocol import set_temperature
 
 from flask import Flask
 from flask import jsonify
@@ -36,6 +37,10 @@ def temp(ip_address):
     printer_info = get_temp({'ip': ip_address, 'port': PORT})
     return jsonify(printer_info)
 
+@app.route("/<string:ip_address>/set-temp/<string:temp>")
+def set_temp(ip_address, temp):
+    printer_info = set_temperature({'ip': ip_address, 'port': PORT}, temp)
+    return jsonify(printer_info)
 
 @app.route("/<string:ip_address>/progress")
 def progress(ip_address):
